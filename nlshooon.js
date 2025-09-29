@@ -2,9 +2,9 @@ process.on('uncaughtException', console.error)
 process.on('unhandledRejection', console.error)
 
 /*
-	* Create By Naze
-	* Follow https://github.com/nazedev
-	* Whatsapp : https://whatsapp.com/channel/0029VaWOkNm7DAWtkvkJBK43
+	* Create By nlshooon 
+	* Follow ig:@nlshooon
+	* Whatsapp : 081917772336
 */
 
 require('./settings');
@@ -53,14 +53,14 @@ const { rdGame, iGame, tGame, gameSlot, gameCasinoSolo, gameSamgongSolo, gameMer
 const { pinterest, wallpaper, remini, wikimedia, hitamkan, yanzGpt, mediafireDl, ringtone, styletext, instagramDl, tiktokDl, facebookDl, instaStalk, telegramStalk, tiktokStalk, genshinStalk, instaStory, bk9Ai, spotifyDl, ytMp4, ytMp3, NvlGroup, quotedLyo, youSearch, gptLogic, savetube, simi, geminiAi } = require('./lib/screaper');
 const { unixTimestampSeconds, generateMessageTag, processTime, webApi, getRandom, getBuffer, fetchJson, runtime, clockString, sleep, isUrl, getTime, formatDate, formatp, jsonformat, reSize, toHD, logic, generateProfilePicture, bytesToSize, errorCache, normalize, getSizeMedia, parseMention, getGroupAdmins, readFileTxt, readFileJson, getHashedPassword, generateAuthToken, cekMenfes, generateToken, batasiTeks, randomText, isEmoji, getTypeUrlMedia, pickRandom, convertTimestampToDate, getAllHTML, tarBackup } = require('./lib/function');
 
-module.exports = naze = async (naze, m, msg, store) => {
-	const botNumber = naze.decodeJid(naze.user.id);
+module.exports = nlshooon = async (nlshooon, m, msg, store) => {
+	const botNumber = nlshooon.decodeJid(nlshooon.user.id);
 	const ownerNumber = db?.set?.[botNumber]?.owner?.map(x => x.id) || owner;
 	
 	try {
 		
-		await LoadDataBase(naze, m);
-		await GroupUpdate(naze, m, store);
+		await LoadDataBase(nlshooon, m);
+		await GroupUpdate(nlshooon, m, store);
 		
 		const body = ((m.type === 'conversation') ? m.message.conversation :
 		(m.type == 'imageMessage') ? m.message.imageMessage.caption :
@@ -86,7 +86,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 		const text = q = args.join(' ')
 		const mime = (quoted.msg || quoted).mimetype || ''
 		const qmsg = (quoted.msg || quoted)
-		const author = db?.set?.[botNumber]?.author || 'Nazedev';
+		const author = db?.set?.[botNumber]?.author || 'Nielshon';
 		const packname = db?.set?.[botNumber]?.packname || 'Bot WhatsApp';
 		const hari = moment.tz('Asia/Jakarta').locale('id').format('dddd');
 		const tanggal = moment.tz('Asia/Jakarta').locale('id').format('DD/MM/YYYY');
@@ -140,7 +140,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 				remoteJid: '0@s.whatsapp.net',
 				participant: '0@s.whatsapp.net',
 				fromMe: false,
-				id: 'Naze'
+				id: 'Nlshooon'
 			},
 			message: {
 				contactMessage: {
@@ -169,7 +169,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 				let tglnya = new Date().toISOString().replace(/[:.]/g, '-');
 				for (let o of ownerNumber) {
 					try {
-						await naze.sendMessage(o, { document: fs.readFileSync(datanya), mimetype: 'application/json', fileName: tglnya + '_database.json' })
+						await nlshooon.sendMessage(o, { document: fs.readFileSync(datanya), mimetype: 'application/json', fileName: tglnya + '_database.json' })
 						console.log(`[AUTO BACKUP] Backup berhasil dikirim ke ${o}`);
 					} catch (e) {
 						console.error(`[AUTO BACKUP] Gagal mengirim backup ke ${o}:`, error);
@@ -184,7 +184,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 		// Auto Set Bio
 		if (set.autobio) {
 			if (new Date() * 1 - set.status > 60000) {
-				await naze.updateProfileStatus(`${naze.user.name} | 🎯 Runtime : ${runtime(process.uptime())}`).catch(e => {})
+				await nlshooon.updateProfileStatus(`${nlshooon.user.name} | 🎯 Runtime : ${runtime(process.uptime())}`).catch(e => {})
 				set.status = new Date() * 1
 			}
 		}
@@ -209,7 +209,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 			
 			// Anti Hidetag
 			if (!m.key.fromMe && m.mentionedJid?.length === m.metadata.participanis?.length && db.groups[m.chat].antihidetag && !isCreator && m.isBotAdmin && !m.isAdmin) {
-				await naze.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: m.id, participant: m.sender }})
+				await nlshooon.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: m.id, participant: m.sender }})
 				await m.reply('*Anti Hidetag Sedang Aktif❗*')
 			}
 			
@@ -233,8 +233,8 @@ module.exports = naze = async (naze, m, msg, store) => {
 			// Anti Toxic
 			if (!m.key.fromMe && db.groups[m.chat].antitoxic && !isCreator && m.isBotAdmin && !m.isAdmin) {
 				if (budy.toLowerCase().split(/\s+/).some(word => badWords.includes(word))) {
-					await naze.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: m.id, participant: m.sender }})
-					await naze.relayMessage(m.chat, { extendedTextMessage: { text: `Terdeteksi @${m.sender.split('@')[0]} Berkata Toxic\nMohon gunakan bahasa yang sopan.`, contextInfo: { mentionedJid: [m.key.participant], isForwarded: true, forwardingScore: 1, quotedMessage: { conversation: '*Anti Toxic❗*'}, ...m.key }}}, {})
+					await nlshooon.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: m.id, participant: m.sender }})
+					await nlshooon.relayMessage(m.chat, { extendedTextMessage: { text: `Terdeteksi @${m.sender.split('@')[0]} Berkata Toxic\nMohon gunakan bahasa yang sopan.`, contextInfo: { mentionedJid: [m.key.participant], isForwarded: true, forwardingScore: 1, quotedMessage: { conversation: '*Anti Toxic❗*'}, ...m.key }}}, {})
 				}
 			}
 			
@@ -246,29 +246,29 @@ module.exports = naze = async (naze, m, msg, store) => {
 					if (!chats?.msg) return
 					chats.msg.contextInfo = { mentionedJid: [chats.key.participant], isForwarded: true, forwardingScore: 1, quotedMessage: { conversation: '*Anti Delete❗*'}, ...chats.key }
 					const pesan = chats.type === 'conversation' ? { extendedTextMessage: { text: chats.msg, contextInfo: { mentionedJid: [chats.key.participant], isForwarded: true, forwardingScore: 1, quotedMessage: { conversation: '*Anti Delete❗*'}, ...chats.key }}} : { [chats.type]: chats.msg }
-					await naze.relayMessage(m.chat, pesan, {})
+					await nlshooon.relayMessage(m.chat, pesan, {})
 				}
 			}
 			
 			// Anti Link Group
 			if (db.groups[m.chat].antilink && !isCreator && m.isBotAdmin && !m.isAdmin) {
 				if (budy.match('chat.whatsapp.com/')) {
-					await naze.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: m.id, participant: m.sender }})
-					await naze.relayMessage(m.chat, { extendedTextMessage: { text: `Terdeteksi @${m.sender.split('@')[0]} Mengirim Link Group\nMaaf Link Harus Di Hapus..`, contextInfo: { mentionedJid: [m.key.participant], isForwarded: true, forwardingScore: 1, quotedMessage: { conversation: '*Anti Link❗*'}, ...m.key }}}, {})
+					await nlshooon.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: m.id, participant: m.sender }})
+					await nlshooon.relayMessage(m.chat, { extendedTextMessage: { text: `Terdeteksi @${m.sender.split('@')[0]} Mengirim Link Group\nMaaf Link Harus Di Hapus..`, contextInfo: { mentionedJid: [m.key.participant], isForwarded: true, forwardingScore: 1, quotedMessage: { conversation: '*Anti Link❗*'}, ...m.key }}}, {})
 				}
 			}
 			
 			// Anti Virtex Group
 			if (db.groups[m.chat].antivirtex && !isCreator && m.isBotAdmin && !m.isAdmin) {
 				if (budy.length > 4000) {
-					await naze.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: m.id, participant: m.sender }})
-					await naze.relayMessage(m.chat, { extendedTextMessage: { text: `Terdeteksi @${m.sender.split('@')[0]} Mengirim Virtex..`, contextInfo: { mentionedJid: [m.key.participant], isForwarded: true, forwardingScore: 1, quotedMessage: { conversation: '*Anti Virtex❗*'}, ...m.key }}}, {})
-					await naze.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
+					await nlshooon.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: m.id, participant: m.sender }})
+					await nlshooon.relayMessage(m.chat, { extendedTextMessage: { text: `Terdeteksi @${m.sender.split('@')[0]} Mengirim Virtex..`, contextInfo: { mentionedJid: [m.key.participant], isForwarded: true, forwardingScore: 1, quotedMessage: { conversation: '*Anti Virtex❗*'}, ...m.key }}}, {})
+					await nlshooon.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
 				}
 				if (m.msg?.nativeFlowMessage?.messageParamsJson?.length > 3500) {
-					await naze.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: m.id, participant: m.sender }})
-					await naze.relayMessage(m.chat, { extendedTextMessage: { text: `Terdeteksi @${m.sender.split('@')[0]} Mengirim Bug..`, contextInfo: { mentionedJid: [m.key.participant], isForwarded: true, forwardingScore: 1, quotedMessage: { conversation: '*Anti Bug❗*'}, ...m.key }}}, {})
-					await naze.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
+					await nlshooon.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: m.id, participant: m.sender }})
+					await nlshooon.relayMessage(m.chat, { extendedTextMessage: { text: `Terdeteksi @${m.sender.split('@')[0]} Mengirim Bug..`, contextInfo: { mentionedJid: [m.key.participant], isForwarded: true, forwardingScore: 1, quotedMessage: { conversation: '*Anti Bug❗*'}, ...m.key }}}, {})
+					await nlshooon.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
 				}
 			}
 			
@@ -276,8 +276,8 @@ module.exports = naze = async (naze, m, msg, store) => {
 		
 		// Auto Read
 		if (m.message && m.key.remoteJid !== 'status@broadcast') {
-			if ((set.autoread && naze.public) || isCreator) {
-				naze.readMessages([m.key]);
+			if ((set.autoread && nlshooon.public) || isCreator) {
+				nlshooon.readMessages([m.key]);
 				console.log(chalk.black(chalk.bgWhite('[ PESAN ]:'), chalk.bgGreen(new Date), chalk.bgHex('#00EAD3')(budy || m.type), chalk.bgHex('#AF26EB')(m.key.id) + '\n' + chalk.bgCyanBright('[ DARI ] :'), chalk.bgYellow(m.pushName || (isCreator ? 'Bot' : 'Anonim')), chalk.bgHex('#FF449F')(m.sender), chalk.bgHex('#FF5700')(m.isGroup ? m.metadata.subject : m.chat.endsWith('@newsletter') ? 'Newsletter' : 'Private Chat'), chalk.bgBlue('(' + m.chat + ')')));
 			}
 		}
@@ -287,9 +287,9 @@ module.exports = naze = async (naze, m, msg, store) => {
 		if (db.users[m.sender]?.ban && !isCreator) return
 		
 		// Mengetik & Anti Spam & Hit
-		if (naze.public && isCmd) {
+		if (nlshooon.public && isCmd) {
 			if (set.autotyping) {
-				await naze.sendPresenceUpdate('composing', m.chat)
+				await nlshooon.sendPresenceUpdate('composing', m.chat)
 			}
 			if (cases.includes(command)) {
 				cmdAdd(db.hit);
@@ -339,7 +339,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 						this.waktusholat[sholat] = hariIni
 						for (const [idnya, settings] of Object.entries(db.groups)) {
 							if (settings.waktusholat) {
-								await naze.sendMessage(idnya, { text: `Waktu *${sholat}* telah tiba, ambilah air wudhu dan segeralah shalat🙂.\n\n*${waktu.slice(0, 5)}*\n_untuk wilayah Jakarta dan sekitarnya._` }, { ephemeralExpiration: m.expiration || store?.messages[idnya]?.array?.slice(-1)[0]?.metadata?.ephemeralDuration || 0 }).catch(e => {})
+								await nlshooon.sendMessage(idnya, { text: `Waktu *${sholat}* telah tiba, ambilah air wudhu dan segeralah shalat🙂.\n\n*${waktu.slice(0, 5)}*\n_untuk wilayah Jakarta dan sekitarnya._` }, { ephemeralExpiration: m.expiration || store?.messages[idnya]?.array?.slice(-1)[0]?.metadata?.ephemeralDuration || 0 }).catch(e => {})
 							}
 						}
 					}
@@ -349,7 +349,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 		
 		// Cek Expired
 		checkExpired(premium);
-		checkExpired(sewa, naze);
+		checkExpired(sewa, nlshooon);
 		
 		// TicTacToe
 		let room = Object.values(tictactoe).find(room => room.id && room.game && room.state && room.id.startsWith('tictactoe') && [room.game.playerX, room.game.playerO].includes(m.sender) && room.state == 'PLAYING')
@@ -389,8 +389,8 @@ module.exports = naze = async (naze, m, msg, store) => {
 			let str = `Room ID: ${room.id}\n\n${arr.slice(0, 3).join('')}\n${arr.slice(3, 6).join('')}\n${arr.slice(6).join('')}\n\n${isWin ? `@${winner.split('@')[0]} Menang!` : isTie ? `Game berakhir` : `Giliran ${['❌', '⭕'][1 * room.game._currentTurn]} (@${room.game.currentTurn.split('@')[0]})`}\n❌: @${room.game.playerX.split('@')[0]}\n⭕: @${room.game.playerO.split('@')[0]}\n\nKetik *nyerah* untuk menyerah dan mengakui kekalahan`
 			if ((room.game._currentTurn ^ isSurrender ? room.x : room.o) !== m.chat)
 			room[room.game._currentTurn ^ isSurrender ? 'x' : 'o'] = m.chat
-			if (room.x !== room.o) await naze.sendMessage(room.x, { text: str, mentions: parseMention(str) }, { quoted: m })
-			await naze.sendMessage(room.o, { text: str, mentions: parseMention(str) }, { quoted: m })
+			if (room.x !== room.o) await nlshooon.sendMessage(room.x, { text: str, mentions: parseMention(str) }, { quoted: m })
+			await nlshooon.sendMessage(room.o, { text: str, mentions: parseMention(str) }, { quoted: m })
 			if (isTie || isWin) delete tictactoe[room.id]
 		}
 		
@@ -414,8 +414,8 @@ module.exports = naze = async (naze, m, msg, store) => {
 				roof.status = 'play';
 				roof.asal = m.chat;
 				m.reply(`Suit telah dikirimkan ke chat\n\n@${roof.p.split`@`[0]} dan @${roof.p2.split`@`[0]}\n\nSilahkan pilih suit di chat masing-masing klik https://wa.me/${botNumber.split`@`[0]}`)
-				if (!roof.pilih) naze.sendMessage(roof.p, { text: `Silahkan pilih \n\nBatu🗿\nKertas📄\nGunting✂️` }, { quoted: m })
-				if (!roof.pilih2) naze.sendMessage(roof.p2, { text: `Silahkan pilih \n\nBatu🗿\nKertas📄\nGunting✂️` }, { quoted: m })
+				if (!roof.pilih) nlshooon.sendMessage(roof.p, { text: `Silahkan pilih \n\nBatu🗿\nKertas📄\nGunting✂️` }, { quoted: m })
+				if (!roof.pilih2) nlshooon.sendMessage(roof.p2, { text: `Silahkan pilih \n\nBatu🗿\nKertas📄\nGunting✂️` }, { quoted: m })
 			}
 			let jwb = m.sender == roof.p, jwb2 = m.sender == roof.p2;
 			let g = /gunting/i, b = /batu/i, k = /kertas/i, reg = /^(gunting|batu|kertas)/i;
@@ -424,13 +424,13 @@ module.exports = naze = async (naze, m, msg, store) => {
 				roof.pilih = reg.exec(m.text.toLowerCase())[0];
 				roof.text = m.text;
 				m.reply(`Kamu telah memilih ${m.text} ${!roof.pilih2 ? `\n\nMenunggu lawan memilih` : ''}`);
-				if (!roof.pilih2) naze.sendMessage(roof.p2, { text: '_Lawan sudah memilih_\nSekarang giliran kamu' })
+				if (!roof.pilih2) nlshooon.sendMessage(roof.p2, { text: '_Lawan sudah memilih_\nSekarang giliran kamu' })
 			}
 			if (jwb2 && reg.test(m.text) && !roof.pilih2 && !m.isGroup) {
 				roof.pilih2 = reg.exec(m.text.toLowerCase())[0]
 				roof.text2 = m.text
 				m.reply(`Kamu telah memilih ${m.text} ${!roof.pilih ? `\n\nMenunggu lawan memilih` : ''}`)
-				if (!roof.pilih) naze.sendMessage(roof.p, { text: '_Lawan sudah memilih_\nSekarang giliran kamu' })
+				if (!roof.pilih) nlshooon.sendMessage(roof.p, { text: '_Lawan sudah memilih_\nSekarang giliran kamu' })
 			}
 			let stage = roof.pilih
 			let stage2 = roof.pilih2
@@ -698,7 +698,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 				m.react('✈');
 				m.msg.contextInfo = { isForwarded: true, forwardingScore: 1, quotedMessage: { conversation: `*Pesan Dari ${menfes[m.sender].nama ? menfes[m.sender].nama : 'Seseorang'}*`}, key: { remoteJid: '0@s.whatsapp.net', fromMe: false, participant: '0@s.whatsapp.net' }}
 				const pesan = m.type === 'conversation' ? { extendedTextMessage: { text: m.msg, contextInfo: { isForwarded: true, forwardingScore: 1, quotedMessage: { conversation: `*Pesan Dari ${menfes[m.sender].nama ? menfes[m.sender].nama : 'Seseorang'}*`}, key: { remoteJid: '0@s.whatsapp.net', fromMe: false, participant: '0@s.whatsapp.net' }}}} : { [m.type]: m.msg }
-				await naze.relayMessage(menfes[m.sender].tujuan, pesan, {});
+				await nlshooon.relayMessage(menfes[m.sender].tujuan, pesan, {});
 			}
 			
 			if (chat_ai[m.sender] && m.key.remoteJid !== 'status@broadcast') {
@@ -757,17 +757,17 @@ module.exports = naze = async (naze, m, msg, store) => {
 			case 'setbio': {
 				if (!isCreator) return m.reply(mess.owner)
 				if (!text) return m.reply('Mana text nya?')
-				naze.setStatus(q)
+				nlshooon.setStatus(q)
 				m.reply(`*Bio telah di ganti menjadi ${q}*`)
 			}
 			break
 			case 'setppbot': {
 				if (!isCreator) return m.reply(mess.owner)
 				if (!/image/.test(quoted.type)) return m.reply(`Reply Image Dengan Caption ${prefix + command}`)
-				let media = await naze.downloadAndSaveMediaMessage(quoted, 'ppbot.jpeg')
+				let media = await nlshooon.downloadAndSaveMediaMessage(quoted, 'ppbot.jpeg')
 				if (text.length > 0) {
 					let { img } = await generateProfilePicture(media)
-					await naze.query({
+					await nlshooon.query({
 						tag: 'iq',
 						attrs: {
 							to: '@s.whatsapp.net',
@@ -779,7 +779,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 					await fs.unlinkSync(media)
 					m.reply('Sukses')
 				} else {
-					await naze.updateProfilePicture(botNumber, { url: media })
+					await nlshooon.updateProfilePicture(botNumber, { url: media })
 					await fs.unlinkSync(media)
 					m.reply('Sukses')
 				}
@@ -787,7 +787,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 			break
 			case 'delppbot': {
 				if (!isCreator) return m.reply(mess.owner)
-				await naze.removeProfilePicture(naze.user.id)
+				await nlshooon.removeProfilePicture(nlshooon.user.id)
 				m.reply('Sukses')
 			}
 			break
@@ -808,12 +808,12 @@ module.exports = naze = async (naze, m, msg, store) => {
 			break
 			case 'leave': {
 				if (!isCreator) return m.reply(mess.owner)
-				await naze.groupLeave(m.chat).then(() => naze.sendFromOwner(ownerNumber, 'Sukses Keluar Dari Grup', m, { contextInfo: { isForwarded: true }})).catch(e => {});
+				await nlshooon.groupLeave(m.chat).then(() => nlshooon.sendFromOwner(ownerNumber, 'Sukses Keluar Dari Grup', m, { contextInfo: { isForwarded: true }})).catch(e => {});
 			}
 			break
 			case 'clearchat': {
 				if (!isCreator) return m.reply(mess.owner)
-				await naze.chatModify({ delete: true, lastMessages: [{ key: m.key, messageTimestamp: m.timestamp }] }, m.chat).catch((e) => m.reply('Gagal Menghapus Chat!'))
+				await nlshooon.chatModify({ delete: true, lastMessages: [{ key: m.key, messageTimestamp: m.timestamp }] }, m.chat).catch((e) => m.reply('Gagal Menghapus Chat!'))
 				m.reply('Sukses Membersihkan Pesan')
 			}
 			break
@@ -831,12 +831,12 @@ module.exports = naze = async (naze, m, msg, store) => {
 				if (!isCreator) return m.reply(mess.owner)
 				if (text || m.quoted) {
 					const numbersOnly = m.isGroup ? (text ? text.replace(/\D/g, '') + '@s.whatsapp.net' : m.quoted?.sender) : m.chat
-					await naze.updateBlockStatus(numbersOnly, 'block').then((a) => m.reply(mess.done)).catch((err) => m.reply('Gagal!'))
+					await nlshooon.updateBlockStatus(numbersOnly, 'block').then((a) => m.reply(mess.done)).catch((err) => m.reply('Gagal!'))
 				} else m.reply(`Contoh: ${prefix + command} 62xxx`)
 			}
 			break
 			case 'listblock': {
-				let anu = await naze.fetchBlocklist()
+				let anu = await nlshooon.fetchBlocklist()
 				m.reply(`Total Block : ${anu.length}\n` + anu.map(v => '• ' + v.replace(/@.+/, '')).join`\n`)
 			}
 			break
@@ -844,7 +844,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 				if (!isCreator) return m.reply(mess.owner)
 				if (text || m.quoted) {
 					const numbersOnly = m.isGroup ? (text ? text.replace(/\D/g, '') + '@s.whatsapp.net' : m.quoted?.sender) : m.chat
-					await naze.updateBlockStatus(numbersOnly, 'unblock').then((a) => m.reply(mess.done)).catch((err) => m.reply('Gagal!'))
+					await nlshooon.updateBlockStatus(numbersOnly, 'unblock').then((a) => m.reply(mess.done)).catch((err) => m.reply('Gagal!'))
 				} else m.reply(`Contoh: ${prefix + command} 62xxx`)
 			}
 			break
@@ -884,7 +884,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 				if (!isCreator) return m.reply(mess.owner)
 				if (!text || isNaN(text)) return m.reply(`Kirim/tag Nomernya!\nExample:\n${prefix + command} 62xxx`)
 				const nmrnya = text.replace(/[^0-9]/g, '')
-				const onWa = await naze.onWhatsApp(nmrnya)
+				const onWa = await nlshooon.onWhatsApp(nmrnya)
 				if (!onWa.length > 0) return m.reply('Nomer Tersebut Tidak Terdaftar Di Whatsapp!')
 				if (db?.set?.[botNumber]?.owner) {
 					if (db.set[botNumber].owner.find(a => a.id === nmrnya)) return m.reply('Nomer Tersebut Sudah Ada Di Owner!')
@@ -897,7 +897,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 				if (!isCreator) return m.reply(mess.owner)
 				if (!text || isNaN(text)) return m.reply(`Kirim/tag Nomernya!\nExample:\n${prefix + command} 62xxx`)
 				const nmrnya = text.replace(/[^0-9]/g, '')
-				const onWa = await naze.onWhatsApp(nmrnya)
+				const onWa = await nlshooon.onWhatsApp(nmrnya)
 				if (!onWa.length > 0) return m.reply('Nomer Tersebut Tidak Terdaftar Di Whatsapp!')
 				let list = db.set[botNumber].owner
 				const index = list.findIndex(o => o.id === nmrnya);
@@ -911,7 +911,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 				if (!args[0] || !args[1] || isNaN(args[1])) return m.reply(`Kirim/tag Nomernya!\nExample:\n${prefix + command} 62xxx 1000`)
 				if (args[1].length > 15) return m.reply('Jumlah Money Maksimal 15 digit angka!')
 				const nmrnya = args[0].replace(/[^0-9]/g, '') + '@s.whatsapp.net'
-				const onWa = await naze.onWhatsApp(nmrnya)
+				const onWa = await nlshooon.onWhatsApp(nmrnya)
 				if (!onWa.length > 0) return m.reply('Nomer Tersebut Tidak Terdaftar Di Whatsapp!')
 				if (db.users[nmrnya] && db.users[nmrnya].money >= 0) {
 					addMoney(args[1], nmrnya, db)
@@ -924,7 +924,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 				if (!args[0] || !args[1] || isNaN(args[1])) return m.reply(`Kirim/tag Nomernya!\nExample:\n${prefix + command} 62xxx 10`)
 				if (args[1].length > 10) return m.reply('Jumlah Limit Maksimal 10 digit angka!')
 				const nmrnya = args[0].replace(/[^0-9]/g, '') + '@s.whatsapp.net'
-				const onWa = await naze.onWhatsApp(nmrnya)
+				const onWa = await nlshooon.onWhatsApp(nmrnya)
 				if (!onWa.length > 0) return m.reply('Nomer Tersebut Tidak Terdaftar Di Whatsapp!')
 				if (db.users[nmrnya] && db.users[nmrnya].limit >= 0) {
 					addLimit(args[1], nmrnya, db)
@@ -939,7 +939,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 				if (anu.length === 0) return m.reply(teks)
 				for (let i of anu) {
 					if (store.messages?.[i]?.array?.length) {
-						let nama = naze.getName(m.sender)
+						let nama = nlshooon.getName(m.sender)
 						teks += `${setv} *Nama :* ${nama}\n${setv} *User :* @${i.split('@')[0]}\n${setv} *Chat :* https://wa.me/${i.split('@')[0]}\n\n=====================\n\n`
 					}
 				}
@@ -966,11 +966,11 @@ module.exports = naze = async (naze, m, msg, store) => {
 			case 'creategc': case 'buatgc': {
 				if (!isCreator) return m.reply(mess.owner)
 				if (!text) return m.reply(`Example:\n${prefix + command} *Nama Gc*`)
-				let group = await naze.groupCreate(q, [m.sender])
-				let res = await naze.groupInviteCode(group.id)
+				let group = await nlshooon.groupCreate(q, [m.sender])
+				let res = await nlshooon.groupInviteCode(group.id)
 				await m.reply(`*Link Group :* *https://chat.whatsapp.com/${res}*\n\n*Nama Group :* *${group.subject}*\nSegera Masuk dalam 30 detik\nAgar menjadi Admin`, { detectLink: true })
 				await sleep(30000)
-				await naze.groupParticipantsUpdate(group.id, [m.sender], 'promote').catch(e => {});
+				await nlshooon.groupParticipantsUpdate(group.id, [m.sender], 'promote').catch(e => {});
 				await naze.sendMessage(group.id, { text: 'Done' })
 			}
 			break
@@ -988,7 +988,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 					if (e.data == 410) return m.reply('Url Grup Telah Di Setel Ulang❗');
 					if (e.data == 500) return m.reply('Grup Penuh❗');
 				}
-				await naze.groupGetInviteInfo(urlny).then(a => {
+				await nlshooon.groupGetInviteInfo(urlny).then(a => {
 					addExpired({ url: urlny, expired: (teks2?.replace(/[^0-9]/g, '') || 30) + 'd', ...a }, sewa)
 					m.reply('Sukses Menambahkan Sewa Selama ' + (teks2?.replace(/[^0-9]/g, '') || 30) + ' hari\nOtomatis Keluar Saat Waktu Habis!')
 				}).catch(e => m.reply('Gagal Menambahkan Sewa!'))
@@ -1000,7 +1000,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 				const urlny = text.split('chat.whatsapp.com/')[1].trim()
 				if (checkStatus(urlny, sewa)) {
 					await m.reply('Sukses Menghapus Sewa')
-					await naze.groupLeave(getStatus(urlny, sewa).id).catch(e => {});
+					await nlshooon.groupLeave(getStatus(urlny, sewa).id).catch(e => {});
 					sewa.splice(getPosition(urlny, sewa), 1);
 				} else m.reply(`${text} Tidak Terdaftar Di Database\nExample:\n${prefix + command} https://chat.whatsapp.com/xxxx\n Or \n${prefix + command} id_group@g.us`)
 			}
@@ -1019,7 +1019,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 				if (!text) return m.reply(`Example:\n${prefix + command} @tag|waktu\n${prefix + command} @${m.sender.split('@')[0]}|30 hari`)
 				let [teks1, teks2] = text.split('|').map(x => x.trim());
 				const nmrnya = teks1.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
-				const onWa = await naze.onWhatsApp(nmrnya)
+				const onWa = await nlshooon.onWhatsApp(nmrnya)
 				if (!onWa.length > 0) return m.reply('Nomer Tersebut Tidak Terdaftar Di Whatsapp!')
 				if (teks2) {
 					if (db.users[nmrnya] && db.users[nmrnya].limit >= 0) {
@@ -1061,13 +1061,13 @@ module.exports = naze = async (naze, m, msg, store) => {
 				try {
 					if (quoted.isMedia) {
 						if (/image|video/.test(quoted.mime)) {
-							await naze.sendMessage('status@broadcast', {
+							await nlshooon.sendMessage('status@broadcast', {
 								[`${quoted.mime.split('/')[0]}`]: await quoted.download(),
 								caption: text || m.quoted?.body || ''
 							}, { statusJidList, broadcast: true })
 							m.react('✅')
 						} else if (/audio/.test(quoted.mime)) {
-							await naze.sendMessage('status@broadcast', {
+							await nlshooon.sendMessage('status@broadcast', {
 								audio: await quoted.download(),
 								mimetype: 'audio/mp4',
 								ptt: true
@@ -1289,7 +1289,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 			}
 			break
 			case 'donasi': case 'donate': {
-				m.reply('Donasi Dapat Melalui Url Dibawah Ini :\nhttps://saweria.co/naze')
+				m.reply('Donasi Dapat Melalui Url Dibawah Ini :\nhttps://saweria.co/nlshooon')
 			}
 			break
 			
@@ -1301,9 +1301,9 @@ module.exports = naze = async (naze, m, msg, store) => {
 				if (text || m.quoted) {
 					const numbersOnly = text ? text.replace(/\D/g, '') + '@s.whatsapp.net' : m.quoted?.sender
 					try {
-						await naze.groupParticipantsUpdate(m.chat, [numbersOnly], 'add').then(async (res) => {
+						await nlshooon.groupParticipantsUpdate(m.chat, [numbersOnly], 'add').then(async (res) => {
 							for (let i of res) {
-								let invv = await naze.groupInviteCode(m.chat)
+								let invv = await nlshooon.groupInviteCode(m.chat)
 								const statusMessages = {
 									200: `Berhasil menambahkan @${numbersOnly.split('@')[0]} ke grup!`,
 									401: 'Dia Memblokir Bot!',
@@ -1334,7 +1334,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 				if (!m.isBotAdmin) return m.reply(mess.botAdmin)
 				if (text || m.quoted) {
 					const numbersOnly = text ? text.replace(/\D/g, '') + '@s.whatsapp.net' : m.quoted?.sender
-					await naze.groupParticipantsUpdate(m.chat, [numbersOnly], 'remove').catch((err) => m.reply('Gagal!'))
+					await nlshooon.groupParticipantsUpdate(m.chat, [numbersOnly], 'remove').catch((err) => m.reply('Gagal!'))
 				} else m.reply(`Contoh: ${prefix + command} 62xxx`)
 			}
 			break
@@ -1344,7 +1344,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 				if (!m.isBotAdmin) return m.reply(mess.botAdmin)
 				if (text || m.quoted) {
 					const numbersOnly = text ? text.replace(/\D/g, '') + '@s.whatsapp.net' : m.quoted?.sender
-					await naze.groupParticipantsUpdate(m.chat, [numbersOnly], 'promote').catch((err) => m.reply('Gagal!'))
+					await nlshooon.groupParticipantsUpdate(m.chat, [numbersOnly], 'promote').catch((err) => m.reply('Gagal!'))
 				} else m.reply(`Contoh: ${prefix + command} 62xxx`)
 			}
 			break
@@ -1354,7 +1354,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 				if (!m.isBotAdmin) return m.reply(mess.botAdmin)
 				if (text || m.quoted) {
 					const numbersOnly = text ? text.replace(/\D/g, '') + '@s.whatsapp.net' : m.quoted?.sender
-					await naze.groupParticipantsUpdate(m.chat, [numbersOnly], 'demote').catch((err) => m.reply('Gagal!'))
+					await nlshooon.groupParticipantsUpdate(m.chat, [numbersOnly], 'demote').catch((err) => m.reply('Gagal!'))
 				} else m.reply(`Contoh: ${prefix + command} 62xxx`)
 			}
 			break
@@ -1368,7 +1368,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 						db.groups[m.chat].warn[numbersOnly] = 1
 						m.reply('Peringatan 1/4, akan dikick sewaktu waktu❗')
 					} else if (db.groups[m.chat].warn[numbersOnly] >= 3) {
-						await naze.groupParticipantsUpdate(m.chat, [numbersOnly], 'remove').catch((err) => m.reply('Gagal!'))
+						await nlshooon.groupParticipantsUpdate(m.chat, [numbersOnly], 'remove').catch((err) => m.reply('Gagal!'))
 						delete db.groups[m.chat].warn[numbersOnly]
 					} else {
 						db.groups[m.chat].warn[numbersOnly] += 1
@@ -1396,7 +1396,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 				if (!m.isBotAdmin) return m.reply(mess.botAdmin)
 				if (text || m.quoted) {
 					const teksnya = text ? text : m.quoted.text
-					await naze.groupUpdateSubject(m.chat, teksnya).catch((err) => m.reply('Gagal!'))
+					await nlshooon.groupUpdateSubject(m.chat, teksnya).catch((err) => m.reply('Gagal!'))
 				} else m.reply(`Contoh: ${prefix + command} textnya`)
 			}
 			break
@@ -1406,7 +1406,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 				if (!m.isBotAdmin) return m.reply(mess.botAdmin)
 				if (text || m.quoted) {
 					const teksnya = text ? text : m.quoted.text
-					await naze.groupUpdateDescription(m.chat, teksnya).catch((err) => m.reply('Gagal!'))
+					await nlshooon.groupUpdateDescription(m.chat, teksnya).catch((err) => m.reply('Gagal!'))
 				} else m.reply(`Contoh: ${prefix + command} textnya`)
 			}
 			break
@@ -1416,10 +1416,10 @@ module.exports = naze = async (naze, m, msg, store) => {
 				if (!m.isBotAdmin) return m.reply(mess.botAdmin)
 				if (!m.quoted) return m.reply('Reply Gambar yang mau dipasang di Profile Bot')
 				if (!/image/.test(quoted.type)) return m.reply(`Reply Image Dengan Caption ${prefix + command}`)
-				let media = await naze.downloadAndSaveMediaMessage(quoted, 'ppgc.jpeg')
+				let media = await nlshooon.downloadAndSaveMediaMessage(quoted, 'ppgc.jpeg')
 				if (text.length > 0) {
 					let { img } = await generateProfilePicture(media)
-					await naze.query({
+					await nlshooon.query({
 						tag: 'iq',
 						attrs: {
 							target: m.chat,
@@ -1432,7 +1432,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 					await fs.unlinkSync(media)
 					m.reply('Sukses')
 				} else {
-					await naze.updateProfilePicture(m.chat, { url: media })
+					await nlshooon.updateProfilePicture(m.chat, { url: media })
 					await fs.unlinkSync(media)
 					m.reply('Sukses')
 				}
@@ -1440,21 +1440,21 @@ module.exports = naze = async (naze, m, msg, store) => {
 			break
 			case 'delete': case 'del': case 'd': {
 				if (!m.quoted) return m.reply('Reply pesan yang mau di delete')
-				await naze.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: m.isBotAdmin ? false : true, id: m.quoted.id, participant: m.quoted.sender }})
+				await nlshooon.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: m.isBotAdmin ? false : true, id: m.quoted.id, participant: m.quoted.sender }})
 			}
 			break
 			case 'pin': case 'unpin': {
 				if (!m.isGroup) return m.reply(mess.group)
 				if (!m.isAdmin) return m.reply(mess.admin)
 				if (!m.isBotAdmin) return m.reply(mess.botAdmin)
-				await naze.sendMessage(m.chat, { pin: { type: command == 'pin' ? 1 : 0, time: 2592000, key: m.quoted ? m.quoted.key : m.key }})
+				await nlshooon.sendMessage(m.chat, { pin: { type: command == 'pin' ? 1 : 0, time: 2592000, key: m.quoted ? m.quoted.key : m.key }})
 			}
 			break
 			case 'linkgroup': case 'linkgrup': case 'linkgc': case 'urlgroup': case 'urlgrup': case 'urlgc': {
 				if (!m.isGroup) return m.reply(mess.group)
 				if (!m.isAdmin) return m.reply(mess.admin)
 				if (!m.isBotAdmin) return m.reply(mess.botAdmin)
-				let response = await naze.groupInviteCode(m.chat)
+				let response = await nlshooon.groupInviteCode(m.chat)
 				await m.reply(`https://chat.whatsapp.com/${response}\n\nLink Group : ${(store.groupMetadata[m.chat] ? store.groupMetadata[m.chat] : (store.groupMetadata[m.chat] = await naze.groupMetadata(m.chat))).subject}`, { detectLink: true })
 			}
 			break
@@ -1462,7 +1462,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 				if (!m.isGroup) return m.reply(mess.group)
 				if (!m.isAdmin) return m.reply(mess.admin)
 				if (!m.isBotAdmin) return m.reply(mess.botAdmin)
-				await naze.groupRevokeInvite(m.chat).then((a) => {
+				await nlshooon.groupRevokeInvite(m.chat).then((a) => {
 					m.reply(`Sukses Menyetel Ulang, Tautan Undangan Grup ${m.metadata.subject}`)
 				}).catch((err) => m.reply('Gagal!'))
 			}
@@ -1474,21 +1474,21 @@ module.exports = naze = async (naze, m, msg, store) => {
 				let set = db.groups[m.chat]
 				switch (args[0]?.toLowerCase()) {
 					case 'close': case 'open':
-					await naze.groupSettingUpdate(m.chat, args[0] == 'close' ? 'announcement' : 'not_announcement').then(a => m.reply(`*Sukses ${args[0] == 'open' ? 'Membuka' : 'Menutup'} Group*`))
+					await nlshooon.groupSettingUpdate(m.chat, args[0] == 'close' ? 'announcement' : 'not_announcement').then(a => m.reply(`*Sukses ${args[0] == 'open' ? 'Membuka' : 'Menutup'} Group*`))
 					break
 					case 'join':
 					const _list = await naze.groupRequestParticipantsList(m.chat).then(a => a.map(b => b.jid))
 					if (/(a(p|pp|cc)|(ept|rove))|true|ok/i.test(args[1]) && _list.length > 0) {
-						await naze.groupRequestParticipantsUpdate(m.chat, _list, 'approve').catch(e => m.react('❌'))
+						await nlshooon.groupRequestParticipantsUpdate(m.chat, _list, 'approve').catch(e => m.react('❌'))
 					} else if (/reject|false|no/i.test(args[1]) && _list.length > 0) {
-						await naze.groupRequestParticipantsUpdate(m.chat, _list, 'reject').catch(e => m.react('❌'))
+						await nlshooon.groupRequestParticipantsUpdate(m.chat, _list, 'reject').catch(e => m.react('❌'))
 					} else m.reply(`List Request Join :\n${_list.length > 0 ? '- @' + _list.join('\n- @').split('@')[0] : '*Nothing*'}\nExample : ${prefix + command} join acc/reject`)
 					break
 					case 'pesansementara': case 'disappearing':
 					if (/90|7|1|24|on/i.test(args[1])) {
-						naze.sendMessage(m.chat, { disappearingMessagesInChat: /90/i.test(args[1]) ? 7776000 : /7/i.test(args[1]) ? 604800 : 86400 })
+						nlshooon.sendMessage(m.chat, { disappearingMessagesInChat: /90/i.test(args[1]) ? 7776000 : /7/i.test(args[1]) ? 604800 : 86400 })
 					} else if (/0|off|false/i.test(args[1])) {
-						naze.sendMessage(m.chat, { disappearingMessagesInChat: 0 })
+						nlshooon.sendMessage(m.chat, { disappearingMessagesInChat: 0 })
 					} else m.reply('Silahkan Pilih :\n90 hari, 7 hari, 1 hari, off')
 					break
 					case 'antilink': case 'antivirtex': case 'antidelete': case 'welcome': case 'antitoxic': case 'waktusholat': case 'nsfw': case 'antihidetag': case 'setinfo': case 'antitagsw': case 'leave': case 'promote': case 'demote':
@@ -1537,7 +1537,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 				if (!m.isBotAdmin) return m.reply(mess.botAdmin)
 				if (!m.quoted) return m.reply(`Reply pesan dengan caption ${prefix + command}`)
 				delete m.quoted.chat
-				await naze.sendMessage(m.chat, { forward: m.quoted.fakeObj, mentions: m.metadata.participants.map(a => a.id) })
+				await nlshooon.sendMessage(m.chat, { forward: m.quoted.fakeObj, mentions: m.metadata.participants.map(a => a.id) })
 			}
 			break
 			case 'listonline': case 'liston': {
@@ -1551,7 +1551,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 			
 			// Bot Menu
 			case 'owner': case 'listowner': {
-				await naze.sendContact(m.chat, ownerNumber, m);
+				await nlshooon.sendContact(m.chat, ownerNumber, m);
 			}
 			break
 			case 'profile': case 'cek': {
@@ -1589,7 +1589,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 			case 'req': case 'request': {
 				if (!text) return m.reply('Mau Request apa ke Owner?')
 				await m.reply(`*Request Telah Terkirim Ke Owner*\n_Terima Kasih🙏_`)
-				await naze.sendFromOwner(ownerNumber, `Pesan Dari : @${m.sender.split('@')[0]}\nUntuk Owner\n\nRequest ${text}`, m, { contextInfo: { mentionedJid: [m.sender], isForwarded: true }})
+				await nlshooon.sendFromOwner(ownerNumber, `Pesan Dari : @${m.sender.split('@')[0]}\nUntuk Owner\n\nRequest ${text}`, m, { contextInfo: { mentionedJid: [m.sender], isForwarded: true }})
 			}
 			break
 			case 'totalfitur': {
@@ -1610,7 +1610,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 			}
 			break
 			case 'react': {
-				naze.sendMessage(m.chat, { react: { text: args[0], key: m.quoted ? m.quoted.key : m.key }})
+				nlshooon.sendMessage(m.chat, { react: { text: args[0], key: m.quoted ? m.quoted.key : m.key }})
 			}
 			break
 			case 'tagme': {
@@ -1622,8 +1622,8 @@ module.exports = naze = async (naze, m, msg, store) => {
 					case 'mode': case 'public': case 'self':
 					if (!isCreator) return m.reply(mess.owner)
 					if (args[1] == 'public' || args[1] == 'all') {
-						if (naze.public && set.grouponly && set.privateonly) return m.reply('*Sudah Aktif Sebelumnya*')
-						naze.public = set.public = true
+						if (nlshooon.public && set.grouponly && set.privateonly) return m.reply('*Sudah Aktif Sebelumnya*')
+						nlshooon.public = set.public = true
 						set.grouponly = true
 						set.privateonly = true
 						m.reply('*Sukse Change To Public Usage*')
@@ -1742,7 +1742,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 				let _grup = /chat.whatsapp.com\/([\w\d]*)/;
 				let _saluran = /whatsapp\.com\/channel\/([\w\d]*)/;
 				if (_grup.test(text)) {
-					await naze.groupGetInviteInfo(text.match(_grup)[1]).then((_g) => {
+					await nlshooon.groupGetInviteInfo(text.match(_grup)[1]).then((_g) => {
 						let teks = `*[ INFORMATION GROUP ]*\n\nName Group: ${_g.subject}\nGroup ID: ${_g.id}\nCreate At: ${new Date(_g.creation * 1000).toLocaleString()}${_g.owner ? ('\nCreate By: ' + _g.owner) : '' }\nLinked Parent: ${_g.linkedParent}\nRestrict: ${_g.restrict}\nAnnounce: ${_g.announce}\nIs Community: ${_g.isCommunity}\nCommunity Announce:${_g.isCommunityAnnounce}\nJoin Approval: ${_g.joinApprovalMode}\nMember Add Mode: ${_g.memberAddMode}\nDescription ID: ${'`' + _g.descId + '`'}\nDescription: ${_g.desc}\nParticipants:\n`
 						_g.participants.forEach((a) => {
 							teks += a.admin ? `- Admin: @${a.id.split('@')[0]} [${a.admin}]\n` : ''
@@ -1787,7 +1787,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 				if (!text) return m.reply(`Example : ${prefix + command} file name\n\nLihat list pesan dengan ${prefix}listmsg`)
 				let msgs = db.database
 				if (!(text.toLowerCase() in msgs)) return m.reply(`'${text}' tidak terdaftar di list pesan`)
-				await naze.relayMessage(m.chat, msgs[text.toLowerCase()], {})
+				await nlshooon.relayMessage(m.chat, msgs[text.toLowerCase()], {})
 			}
 			break
 			case 'listmsg': {
@@ -1825,7 +1825,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 			break
 			case 'listcmd': {
 				let teks = `*List Hash*\nInfo: *bold* hash is Locked\n${Object.entries(global.db.cmd).map(([key, value], index) => `${index + 1}. ${value.locked ? `*${key}*` : key} : ${value.text}`).join('\n')}`.trim()
-				naze.sendText(m.chat, teks, m);
+				nlshooon.sendText(m.chat, teks, m);
 			}
 			break
 			case 'lockcmd': case 'unlockcmd': {
@@ -1846,7 +1846,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 					const anu = await m.getQuotedObj()
 					if (!anu) return m.reply('Format Tidak Tersedia!')
 					if (!anu.quoted) return m.reply('Pesan Yang Anda Reply Tidak Mengandung Reply')
-					await naze.relayMessage(m.chat, { [anu.quoted.type]: anu.quoted.msg }, {})
+					await nlshooon.relayMessage(m.chat, { [anu.quoted.type]: anu.quoted.msg }, {})
 				}
 			}
 			break
@@ -1858,7 +1858,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 				let [teks1, teks2] = text.split`|`
 				if (teks1) {
 					const tujuan = teks1.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
-					const onWa = await naze.onWhatsApp(tujuan)
+					const onWa = await nlshooon.onWhatsApp(tujuan)
 					if (!onWa.length > 0) return m.reply('Nomer Tersebut Tidak Terdaftar Di Whatsapp!')
 					menfes[m.sender] = {
 						tujuan: tujuan,
@@ -1874,7 +1874,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 							delete menfes[m.sender];
 						}
 						if (menfes[tujuan]) {
-							naze.sendMessage(tujuan, { text: `_Waktu ${command} habis_` });
+							nlshooon.sendMessage(tujuan, { text: `_Waktu ${command} habis_` });
 							delete menfes[tujuan];
 						}
 						menfesTimeouts.delete(m.sender);
@@ -1882,7 +1882,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 					}, 600000);
 					menfesTimeouts.set(m.sender, timeout);
 					menfesTimeouts.set(tujuan, timeout);
-					naze.sendMessage(tujuan, { text: `_${command} connected_\n*Note :* jika ingin mengakhiri ketik _*${prefix}del${command}*_` });
+					nlshooon.sendMessage(tujuan, { text: `_${command} connected_\n*Note :* jika ingin mengakhiri ketik _*${prefix}del${command}*_` });
 					m.reply(`_Memulai ${command}..._\n*Silahkan Mulai kirim pesan/media*\n*Durasi ${command} hanya selama 10 menit*\n*Note :* jika ingin mengakhiri ketik _*${prefix}del${command}*_`)
 					setLimit(m, db)
 				} else m.reply(`Masukkan Nomernya!\nExample : ${prefix + command} 62xxxx|Nama Samaran`)
@@ -1899,7 +1899,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 					clearTimeout(menfesTimeouts.get(anu.tujuan));
 					menfesTimeouts.delete(anu.tujuan);
 				}
-				naze.sendMessage(anu.tujuan, { text: `Chat Di Akhiri Oleh ${anu.nama ? anu.nama : 'Seseorang'}` })
+				nlshooon.sendMessage(anu.tujuan, { text: `Chat Di Akhiri Oleh ${anu.nama ? anu.nama : 'Seseorang'}` })
 				m.reply(`Sukses Mengakhiri Sesi ${command.split('del')[1]}!`)
 				delete menfes[anu.tujuan];
 				delete menfes[m.sender];
@@ -1932,9 +1932,9 @@ module.exports = naze = async (naze, m, msg, store) => {
 				if (!isPremium) return m.reply(mess.prem)
 				if (!isLimit) return m.reply(mess.limit)
 				const nmrnya = text ? text.replace(/[^0-9]/g, '') + '@s.whatsapp.net' : m.sender
-				const onWa = await naze.onWhatsApp(nmrnya)
+				const onWa = await nlshooon.onWhatsApp(nmrnya)
 				if (!onWa.length > 0) return m.reply('Nomer Tersebut Tidak Terdaftar Di Whatsapp!')
-				await JadiBot(naze, nmrnya, m, store)
+				await JadiBot(nlshooon, nmrnya, m, store)
 				m.reply(`Gunakan ${prefix}stopjadibot\nUntuk Berhenti`)
 				setLimit(m, db)
 			}
@@ -1947,7 +1947,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 			}
 			break
 			case 'listjadibot': {
-				ListJadiBot(naze, m)
+				ListJadiBot(nlshooon, m)
 			}
 			break
 			
@@ -2008,7 +2008,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 			case 'toimage': case 'toimg': {
 				if (!/webp|video|image/.test(mime)) return m.reply(`Reply Video/Stiker dengan caption *${prefix + command}*`)
 				m.reply(mess.wait)
-				let media = await naze.downloadAndSaveMediaMessage(qmsg)
+				let media = await nlshooon.downloadAndSaveMediaMessage(qmsg)
 				let ran = `./database/sampah/${getRandom('.png')}`;
 				exec(`convert ${media}[0] ${ran}`, (err) => {
 					fs.unlinkSync(media)
@@ -2024,7 +2024,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 				if ((m.quoted ? m.quoted.type : m.type) === 'videoMessage') {
 					const anu = await quoted.download()
 					const message = await generateWAMessageContent({ video: anu }, { upload: naze.waUploadToServer })
-					await naze.relayMessage(m.chat, { ptvMessage: message.videoMessage }, {})
+					await nlshooon.relayMessage(m.chat, { ptvMessage: message.videoMessage }, {})
 				} else m.reply('Reply Video Yang Mau Di Ubah Ke PTV Message!')
 			}
 			break
@@ -4588,3 +4588,4 @@ fs.watchFile(file, () => {
 	delete require.cache[file]
 	require(file)
 });
+
